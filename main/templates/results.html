@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+{%block title%}
+Result
+{%endblock title%}
+{% block body%}
+<h2 class="my-3">Result</h2>
+<table class="table table-bordered">
+    <thead>
+            <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>Your Answer</th>
+                <th>Right Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in result  %}
+        <tr>
+            <td>{{row.user}}</td>
+            <td>{{row.question}}</td>
+             {% if row.question.right_opt == row.Submitted_Answer %}
+            <td class="bg-success text-white">{{row.Submitted_Answer}}</td>
+            {% else %}
+            <td class="bg-danger text-white">{{row.Submitted_Answer}}</td>
+            {% endif%} 
+            <td >{{row.question.right_opt}}</td>
+            
+          
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 class="my-3">Result Detail</h2>
+<table class="table table-bordered">
+    <thead>
+            <tr>
+                <th>Total Skipped</th>        
+                <th>{{Total_skipped}}</th>        
+        </tr>
+    <thead>
+            <tr>
+                <th>Total Attempt</th>        
+                <th>{{Total_Attemp}}</th>        
+        </tr>
+            <tr>
+                <th>Total Right</th>        
+                <th>{{Right_Ans}}</th>        
+        </tr>
+            <tr>
+                <th>Percentage</th>        
+                <th>{{Percentage}}</th>        
+        </tr>
+       
+    </tbody>
+</table>
+{% endblock body%}
+   

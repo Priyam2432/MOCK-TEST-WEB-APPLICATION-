@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block title%}
+{{category.title}}
+{%endblock title%}
+{% block body%}
+<div class="container my-1">
+<h2 class="my-3">
+    {{category.title}}
+</h2>
+
+    <div class="card border-dark">
+        <h4 class="card-header ">{{question.question}}?<span class="timer float-end"></span></h4>
+    <form method='POST' action="{% url 'submit_answer' category.id question.id%} ">
+        {% csrf_token %}
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+        <td><input class="answer" value="{{question.opt_1}}" id="Option_1" name="answer" type="radio"/></td>
+        <th><label for="Option_1">{{question.opt_1}}</label></th>
+</tr>
+    <tr>
+        <td><input class="answer" value="{{question.opt_2}}" id="Option_2" name="answer" type="radio"/></td>
+        <th><label for="Option_2">{{question.opt_2}}</label></th>
+</tr>
+    <tr>
+        <td><input class="answer" value="{{question.opt_3}}" id="Option_3" name="answer" type="radio"/></td>
+        <th><label for="Option_3">{{question.opt_3}}</label></th>
+</tr>
+    <tr>
+        <td><input class="answer" value="{{question.opt_4}}"id="Option_4" name="answer" type="radio"/></td>
+        <th><label for="Option_4">{{question.opt_4}}</label></th>
+</tr>
+</table>
+    </div>
+    <div class="card-footer">
+        <input type="submit" name="Skip" value="Skip" class="btn btn-danger Skipbtn"/>
+        <input type="submit" name="submit" value="submit" class="btn btn-primary submitbtn"/>
+    </div>
+    
+</form>
+</div>
+<script type="text/javascript" scr="{%static 'jquery-3.6.4.min.js' %}"><script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".submitbtn").on('click',function(){
+        var _checkedAns=$("input[name='answer']:_checked").val();
+        if(_checkedAns==undefined){
+            alert('please select one')
+            return false;
+        }
+    });    
+});    
+<script>
+{% endblock body%}

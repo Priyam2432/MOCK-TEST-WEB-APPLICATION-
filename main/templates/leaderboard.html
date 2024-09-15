@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+
+{%block title%}
+Leaderboard
+{%endblock title%}
+{% block body%}
+<h2 class="my-3">Leaderboard</h2>
+<table class="table table-bordered">
+    <thead>
+            <tr>
+                <th>Position</th>
+                <th>Username</th>
+                <th>Precentage</th>
+                
+                
+            </tr>
+           
+            
+        </thead>
+
+
+        
+            
+            <tbody>
+                {% for row in percent%}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{row.user}}</td>
+                <td>{{row.percent}}</td>
+                
+            </tr>
+            {% endfor %}
+         
+        </tbody>
+
+
+</table>
+{% endblock body%}
+   

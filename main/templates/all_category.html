@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{%block title%}
+Categories
+{%endblock title%}
+{% block body%}
+<div class="container my-1">
+  <h2 class="text-center">All Categories</h2>
+{% for category in data%}
+<a href="{% url 'category_question' category.id%}">
+<div class="d-grid gap-2 my-3">
+  <button class="btn btn-primary" type="button">{{category.title}}</button>
+</div>
+{% endfor %}
+</div>
+{% endblock body%}
